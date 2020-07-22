@@ -54,8 +54,10 @@ fn main() {
 
 	fn calculate_mana(deck_size: f32, spells: f32, total_cmc: f32) {
 		let mut symbol_count = Vec::new();
-		let colors = ["white", "blue", "green", "red", "black", "colorless"];
 		let total_lands = deck_size - spells;
+		let colors = ["white", "blue", "green", "red", "black", "colorless"];
+
+		println!("Now we need to get all the mana symbols throughout your deck (not just in the cmc, but in the cards abilities as well).");
 
 		for i in colors.iter() {
 			let mut buffer = String::new();
@@ -66,6 +68,7 @@ fn main() {
 		}
 
 		println!("Your average CMC is: {}", total_cmc / deck_size);
+
 		println!("You should have {} total land", total_lands);
 
 		for i in symbol_count {
