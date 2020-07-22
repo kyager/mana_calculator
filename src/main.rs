@@ -1,5 +1,8 @@
 fn main() {
-	calculate_mana();
+	let deck_size = get_deck_size();
+	let spells = get_spell_count();
+
+	calculate_mana(deck_size, spells);
 
 	fn get_deck_size() -> f32 {
 		let mut buffer = String::new();
@@ -17,13 +20,11 @@ fn main() {
 		buffer.trim().parse::<f32>().unwrap()
 	}
 
-	fn calculate_mana() {
+	fn calculate_mana(deck_size: f32, spells: f32) {
 		let colors = ["white", "blue", "green", "red", "black", "colorless"];
-		let deck_size = get_deck_size();
-		let spells = get_spell_count();
 		let mut symbol_count = Vec::new();
 
-		for i in &colors {
+		for i in colors.iter() {
 			let mut buffer = String::new();
 			println!("How many {} symbols are in the deck?", i);
 			std::io::stdin().read_line(&mut buffer).expect("Failed.");
